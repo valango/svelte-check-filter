@@ -3,12 +3,12 @@
     "name": "Villem Alango",
     "email": "villem.alango@gmail.com"
   },
-  "name": "svelte-check-filter",
+  "name": "@valango/svelte-check-filter",
   "version": "0.0.1",
   "description": "Stream filter for svelte-check output.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/valango/svelte-check-filter.git"
+    "url": "https://github.com/valango/svelte-check-filter.git"
   },
   "files": [
     "README.md",
