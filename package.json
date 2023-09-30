@@ -3,7 +3,7 @@
     "name": "Villem Alango",
     "email": "villem.alango@gmail.com"
   },
-  "name": "@valango/svelte-check-filter",
+  "name": "svelte-check-filter",
   "version": "0.0.1",
   "description": "Stream filter for svelte-check output.",
   "repository": {
