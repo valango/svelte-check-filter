@@ -21,8 +21,10 @@
     "clean": "rimraf .nyc_output out reports t*mp *.log *.t*mp *.lcov",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint --ext .js .",
+    "local-install": "npm run pack_ && npm i -g x.tar && rm x.tar",
+    "pack_": "npm run clean && cd .. && tar -c -f nsweep/x.tar -X nsweep/.tar nsweep",
     "purge": "npm run clean && rimraf node_modules",
-    "test": "NODE_ENV=test nyc mocha 'test/**/*.test.js'"
+    "test": "NODE_ENV=test mocha 'test/**/*.test.js'"
   },
   "license": "ISC",
   "bugs": {
@@ -38,27 +40,9 @@
     "stream",
     "filter"
   ],
-  "nyc": {
-    "all": true,
-    "check-coverage": true,
-    "exclude": [
-      "src/typedefs.js"
-    ],
-    "include": [
-      "src/**/*.js",
-      "test/mock-fs/**/*.js"
-    ],
-    "reporter": [
-      "lcov",
-      "text-summary"
-    ],
-    "report-dir": "./reports"
-  },
   "devDependencies": {
     "chai": "^4.3.10",
-    "codecov": "^3.8.3",
     "mocha": "^10.2.0",
-    "nyc": "^15.1.0",
     "rimraf": "^5.0.5"
   }
 }
