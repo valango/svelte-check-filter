@@ -1,0 +1,1374 @@
+
+====================================
+Loading svelte-check in workspace: /Users/villem/dev-sol/roofit
+Getting Svelte diagnostics...
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:214:50
+Error: Argument of type 'ArrayLike<number>' is not assignable to parameter of type 'Vector3[]'.
+  Type 'ArrayLike<number>' is missing the following properties from type 'Vector3[]': pop, push, concat, join, and 37 more. 
+
+    const mesh = new Mesh(this.makeWallsGeometry(shapeGeometry.attributes.position.array, plane.position.y), this.materials.wall)
+    mesh.receiveShadow = true
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:228:43
+Error: Argument of type 'Vector3' is not assignable to parameter of type 'number'. 
+    for (let i = 0; i < shape.length; i += 3) {
+      const vertex: Vector3 = new Vector3(shape[i], shape[i+1], shape[i + 2])
+      vertexPoints.push(vertex)
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:229:25
+Error: Argument of type 'Vector3' is not assignable to parameter of type 'number'. 
+      const vertex: Vector3 = new Vector3(shape[i], shape[i+1], shape[i + 2])
+      vertexPoints.push(vertex)
+    }
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:234:13
+Error: Type 'number' is not assignable to type 'Vector3'. 
+    for (let v = 0; v < vertexPoints.length-1; v++) {
+      const firstVertex: Vector3 = vertexPoints[v];
+      const secondVertex: Vector3 = vertexPoints[v+1];
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:235:13
+Error: Type 'number' is not assignable to type 'Vector3'. 
+      const firstVertex: Vector3 = vertexPoints[v];
+      const secondVertex: Vector3 = vertexPoints[v+1];
+      const thirdVertex: Vector3 = firstVertex.clone()
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:238:29
+Error: Argument of type 'Vector3' is not assignable to parameter of type 'number'. 
+      thirdVertex.y = -wallHeight
+      geometryVertices.push(thirdVertex, secondVertex, firstVertex)
+
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:248:29
+Error: Argument of type 'Vector3' is not assignable to parameter of type 'number'. 
+      thirdOppositeVertex.z = secondVertex.z
+      geometryVertices.push(firstOppositeVertex, secondOppositeVertex, thirdOppositeVertex)
+    }
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsModelGenerator.ts:252:28
+Error: Argument of type 'number[]' is not assignable to parameter of type 'Vector3[] | Vector2[]'.
+  Type 'number[]' is not assignable to type 'Vector3[]'.
+    Type 'number' is not assignable to type 'Vector3'. 
+    geometry.computeVertexNormals()
+    geometry.setFromPoints(geometryVertices)
+    return geometry
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/AddressSearch.svelte:44:59
+Warn: A11y: Avoid using autofocus (svelte)
+  <input type="text" placeholder={$_('project.details.addressPlaceholder')}
+         class="form-control" id="addressSearch" required {autofocus}
+         bind:this={addressInput} bind:value={address.address}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/CustomerInfo.svelte:27:3
+Warn: A11y: A form label must be associated with a control. (svelte)
+<div class="form-group">
+  <label>{$_('project.customer.phone')}</label>
+  <PhoneInput bind:value={customer.phone}/>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/NumericInput.svelte:24:56
+Error: Operator '>=' cannot be applied to types 'string | number' and 'number'. (ts)
+
+  $: inputValue = value as any === undefined ? null : (step! >= 1 ? Math.round(value) : value)
+  $: if (initValue === Number.MIN_SAFE_INTEGER) initValue = value
+
+
+/Users/villem/dev-sol/roofit/ui/shared/DimensionInput.svelte:16:22
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+<div class="input-group input-group-sm">
+  <NumericInput bind:value {min} {max} {noNull} {step} {disabled} {placeholder} {alert} on:focus on:blur/>
+  <div class="input-group-append">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectDetails.svelte:18:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="col-6 form-group">
+      <label>{$_('project.details.buildingXm')}</label>
+      <DimensionInput bind:value={project.buildingXm} unit="m" step="any" disabled={existing}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectDetails.svelte:22:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="col-6 form-group">
+      <label>{$_('project.details.buildingYm')}</label>
+      <DimensionInput bind:value={project.buildingYm} unit="m" step="any" disabled={existing}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectDetails.svelte:28:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="slope col-6 form-group" title={$_('roof.slopeAngleHelp')}>
+        <label>{$_('roof.slopeAngle')}</label>
+        <AngleInput bind:value={project.slopeAngle} min={10} max={80} step={0.01}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectDetails.svelte:34:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="height col-6 form-group" title={$_('project.details.buildingHmHelp') + ', > ' + minBuildingHm(project) + 'm'}>
+      <label>{$_('project.details.buildingHm')}</label>
+      <DimensionInput bind:value={project.buildingHm} unit="m" step="any" min={minBuildingHm(project)} max={project.buildingXm * 100}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectDetails.svelte:39:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="azimuth col-12 form-group">
+      <label class="w-100">
+        {$_('roof.azimuth')}
+        <span class="text-muted float-right">{$_('roof.azimuthHelp')}</span>
+      </label>
+      <div class="row">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/GoogleMap.svelte:34:45
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+
+      map.addListener('zoom_changed', () => zoom = map!.getZoom())
+      map.addListener('dragstart', () => userDrag = true)
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectDetailsForm.svelte:83:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="form-group mt-2">
+        <label>{$_('project.status')}</label>
+        <ProjectStatusSelect bind:status={copy.status}/>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/ProjectMenu.svelte:42:7
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+    <li class="nav-item">
+      <a class="nav-link" on:click={() => showDetails = true}>{$_('project.details.title')}</a>
+    </li>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/ProjectMenu.svelte:42:7
+Warn: A11y: <a> element should have an href attribute (svelte)
+    <li class="nav-item">
+      <a class="nav-link" on:click={() => showDetails = true}>{$_('project.details.title')}</a>
+    </li>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/ProjectMenu.svelte:40:3
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+
+  <ul class="navbar-nav" on:click={() => showMobileMenu = false}>
+    <li class="nav-item">
+      <a class="nav-link" on:click={() => showDetails = true}>{$_('project.details.title')}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{href}/settings">{$_('settings.title')}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{href}">{$_('roof.planes')}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{href}/summary">{$_('roof.summary')}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{href}/order">{$_('roof.order.title')}</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="app:projects/{project._id}/offer">{$_('roof.offer.title')}</a>
+      </li>
+    {#if $user}
+      <li class="nav-item d-md-none d-block">
+        <a class="nav-link" href="app:projects">{$_('project.title')}</a>
+      </li>
+    {/if}
+  </ul>
+</div>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/FeedbackForm.svelte:20:108
+Warn: A11y: Avoid using autofocus (svelte)
+<form class="feedback" on:submit|preventDefault>
+  <textarea bind:value={feedback} class="form-control" rows="5" placeholder="{$_('feedback.placeholder')}" autofocus></textarea>
+
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:47:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="dropdown-divider w-100"></div>
+      <label class="text-muted w-100 pl-4">{$_('userMenu.support')}</label>
+      <a class="dropdown-item" on:click={
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:48:7
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+      <label class="text-muted w-100 pl-4">{$_('userMenu.support')}</label>
+      <a class="dropdown-item" on:click={
+        () => window.open($_('userMenu.tutorialVideosUrl'), '_blank', `screenX=${window.screenX + 50}, screenY=${window.screenY + 50}`).focus()
+      }>
+        {$_('userMenu.tutorialVideos')}
+      </a>
+      <a class="dropdown-item" on:click={() => showShortcuts = true}>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:48:7
+Warn: A11y: <a> element should have an href attribute (svelte)
+      <label class="text-muted w-100 pl-4">{$_('userMenu.support')}</label>
+      <a class="dropdown-item" on:click={
+        () => window.open($_('userMenu.tutorialVideosUrl'), '_blank', `screenX=${window.screenX + 50}, screenY=${window.screenY + 50}`).focus()
+      }>
+        {$_('userMenu.tutorialVideos')}
+      </a>
+      <a class="dropdown-item" on:click={() => showShortcuts = true}>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:53:7
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+      </a>
+      <a class="dropdown-item" on:click={() => showShortcuts = true}>
+        {$_('keyboardShortcuts.title')}
+      </a>
+      <a class="dropdown-item" on:click={() => showFeedback = true}>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:53:7
+Warn: A11y: <a> element should have an href attribute (svelte)
+      </a>
+      <a class="dropdown-item" on:click={() => showShortcuts = true}>
+        {$_('keyboardShortcuts.title')}
+      </a>
+      <a class="dropdown-item" on:click={() => showFeedback = true}>
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:56:7
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+      </a>
+      <a class="dropdown-item" on:click={() => showFeedback = true}>
+        {$_('userMenu.provideFeedback')}
+      </a>
+      <a class="dropdown-item" on:click={showEmailLink} data-ga="contactUs:clicked" href={"" + supportEmail} target="_blank" rel="noopener noreferrer">
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:56:7
+Warn: A11y: <a> element should have an href attribute (svelte)
+      </a>
+      <a class="dropdown-item" on:click={() => showFeedback = true}>
+        {$_('userMenu.provideFeedback')}
+      </a>
+      <a class="dropdown-item" on:click={showEmailLink} data-ga="contactUs:clicked" href={"" + supportEmail} target="_blank" rel="noopener noreferrer">
+
+
+/Users/villem/dev-sol/roofit/ui/layout/UserMenu.svelte:63:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="dropdown-divider w-100"></div>
+      <label class="text-muted w-100 pl-4">{$_('userMenu.preferences')}</label>
+      <div class="dropdown-item pl-4 d-flex justify-content-between">
+
+
+/Users/villem/dev-sol/roofit/ui/login/LoginForm.svelte:44:118
+Warn: A11y: Avoid using autofocus (svelte)
+    </label>
+    <input id="login" type="text" name="login" bind:value={data.login} class="form-control form-control-lg" required autofocus/>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:62:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="form-group">
+      <label>{$_('admin.partners.parent')}</label>
+      <PartnerSelect {partners} bind:value={partner.partnerId}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:68:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.partners.name')}</label>
+    <input id="partnerName" type="text" class="form-control" bind:value={partner.name} required autofocus>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:69:97
+Warn: A11y: Avoid using autofocus (svelte)
+    <label>{$_('admin.partners.name')}</label>
+    <input id="partnerName" type="text" class="form-control" bind:value={partner.name} required autofocus>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:74:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="form-group col-6">
+      <label>{$_('admin.partners.type')}</label>
+      <select id="partnerTypeSelect" bind:value={partner.type} class="form-control">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:82:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="form-group col-6">
+      <label>{$_('admin.partners.lang')}</label>
+      <select id="partnerLang" bind:value={partner.lang} class="form-control">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:94:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.partners.contactName')}</label>
+    <input type="text" class="form-control" bind:value={partner.contactName} required>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:99:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.partners.email')}</label>
+    <input type="email" class="form-control" bind:value={partner.email} required>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:104:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.partners.phone')}</label>
+    <PhoneInput bind:value={partner.phone}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:109:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.partners.website')}</label>
+    <input type="text" class="form-control" bind:value={partner.website} required>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/PartnerForm.svelte:115:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="form-group">
+      <label>{$_('admin.partners.crmUrl')}</label>
+      <input id="crmUrl" type="url" class="form-control" bind:value={partner.crmUrl}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserForm.svelte:76:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.partners.name')}</label>
+    <input id="partnerName" type="text" class="form-control" bind:value={partner.name} disabled>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserForm.svelte:81:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.users.role')}</label>
+    <select id="userRoleSelect" bind:value={user.role} class="form-control">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserForm.svelte:91:91
+Warn: A11y: Avoid using autofocus (svelte)
+    <label for="userName">{$_('admin.users.name')}</label>
+    <input id="userName" type="text" class="form-control" bind:value={user.name} required autofocus>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserForm.svelte:101:93
+Warn: A11y: Avoid using autofocus (svelte)
+    <label for="userLogin">{$_('admin.users.login')}</label>
+    <input id="userLogin" type="text" class="form-control" bind:value={user.login} required autofocus disabled>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserForm.svelte:105:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('admin.users.phone')}</label>
+    <PhoneInput bind:value={user.phone}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserList.svelte:55:34
+Error: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'. (ts)
+      <td>
+        <Link protocol="mailto:" value={u.email}/>
+      </td>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/admin/UserList.svelte:81:19
+Error: Type 'User | undefined' is not assignable to type 'User'.
+  Type 'undefined' is not assignable to type 'User'. (ts)
+<Modal bind:show={showDeleteConfirm} title={$_('admin.users.delete')}>
+  <DeleteUserForm user={deletedUser} assignees={users.filter(u => u._id !== deletedUser?._id)} on:deleted={() => onUserDeleted(deletedUser)}/>
+</Modal>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/EditableElectricalString.svelte:212:3
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+{#each roofPlane.panels as panel}
+  <g class="terminal plus" on:click={e => continueString(e, panel)} {cursor}>
+    <title>{$_(terminalTitle('electrical.continueString', 'electrical.selectString', panel))}</title>
+    <circle cx={panel.cablePlusX} cy={panel.cablesY} r="60"></circle>
+    <text x={panel.cablePlusX} y={panel.cablesY} text-anchor="middle" dominant-baseline="middle">
+      +
+    </text>
+  </g>
+
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/EditableElectricalString.svelte:220:3
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+
+  <g class="terminal minus" class:start={lastString?.panelIds?.last() === panel.id} on:click={() => startOrRemoveFromString(panel)} {cursor}>
+    <title>{$_(terminalTitle('electrical.startString', 'electrical.removePanelFromString', panel))}</title>
+    <circle cx={panel.cableMinusX} cy={panel.cablesY} r="60"></circle>
+    <text x={panel.cableMinusX} y={panel.cablesY} text-anchor="middle" dominant-baseline="middle">
+      -
+    </text>
+  </g>
+{/each}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/EditableElectricalString.svelte:232:5
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+    <rect stroke="white" stroke-width="10" fill={cableLengthColor} x={x - 145} width="280" y={y - 225} height="150" rx="75"/>
+    <text font-weight={weight} x={x} y={y - 110} text-anchor="middle" on:click={() => startEditing(strId, cut, len)}>
+      {len}m
+    </text>
+  </g>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/EditableElectricalString.svelte:136:5
+Error: Object is possibly 'null'. (ts)
+    await tick()
+    document.getElementById('length-edit').focus()
+  }
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/EditableRoofObject.svelte:90:3
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+  {#if object['invalid']}<title>{$_.apply(undefined, object['invalid'])}</title>{/if}
+  <polygon on:click={onClicked} on:mousedown class:invalid={object['invalid']}
+           fill={roofObjectColors[object.type]} points={polygonToSvg(object.polygon)}></polygon>
+  {#if object.topOverlap}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlane2D.svelte:132:27
+Error: Type '[number, number][]' is not assignable to type 'string'. (ts)
+  {#if showSafeArea}
+    <polygon class="safe" points={new PanelAllocator(roofPlane).polygon}/>
+  {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlane2D.svelte:132:54
+Error: Argument of type 'EditableRoofPlane | PolygonRoofPlane' is not assignable to parameter of type 'EditableRoofPlane'.
+  Type 'PolygonRoofPlane' is missing the following properties from type 'EditableRoofPlane': run, placingParams, rise, ridge, and 57 more. (ts)
+  {#if showSafeArea}
+    <polygon class="safe" points={new PanelAllocator(roofPlane).polygon}/>
+  {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlane2D.svelte:147:121
+Error: Argument of type 'RoofObject | MetalOrder' is not assignable to parameter of type 'RoofObject'.
+  Type 'MetalOrder' is missing the following properties from type 'RoofObject': margin, id, isIntegrated, isVertical, and 10 more. (ts)
+    {:else}
+      <EditableRoofObject {object} {showIDs} {roofPlane} {svgScale} {showYield} on:mousedown={e => onObjectMouseDown(e, object, svgScale)}/>
+    {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlane2D.svelte:151:36
+Error: Type 'EditableRoofPlane | PolygonRoofPlane' is not assignable to type 'EditableRoofPlane'.
+  Type 'PolygonRoofPlane' is not assignable to type 'EditableRoofPlane'. (ts)
+  {#if showStrings}
+    <EditableElectricalString bind:roofPlane {showExtensionCableLength} {canEdit}/>
+  {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/roof/ThreeJsRenderer.ts:29:29
+Error: Cannot find module 'three/examples/jsm/controls/OrbitControls' or its corresponding type declarations. 
+} from 'three'
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
+import {Model3D} from './ThreeJsModelGenerator'
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/RoofTypeSelection.svelte:48:7
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+    <div class="roof-type text-center my-3">
+      <div class="card card-hover-effect" class:active={roofType === type} on:click={() => roofType = type}>
+        <img class="card-img-top p-2" alt="{$_('roof.types.' + type)}" src="/img/roof-types/{type}.svg">
+        <img class="card-img-top px-5 pb-2" alt="{$_('roof.types.' + type)}" src="/img/roof-types/{type}-SIDE.svg">
+        <p>{$_('roof.types.' + type)}</p>
+      </div>
+    </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/NewProjectForm.svelte:80:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="form-group" style="margin-top: 10px">
+        <label>{$_('roof.panels.family')}:</label>
+        <select class="form-control form-control-sm" bind:value={panelFamily}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/NewProjectForm.svelte:82:35
+Error: Argument of type 'User | null' is not assignable to parameter of type '{ isAlphaTester?: boolean | undefined; isBetaTester?: boolean | undefined; } | undefined'.
+  Type 'null' is not assignable to type '{ isAlphaTester?: boolean | undefined; isBetaTester?: boolean | undefined; } | undefined'. (ts)
+        <select class="form-control form-control-sm" bind:value={panelFamily}>
+          {#each getPanelFamilies($user, $user.partner?.settings) as family (family)}
+            <option value={family}>{$_('family.' + family)}</option>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/NewProjectForm.svelte:82:42
+Error: '$user' is possibly 'null'. (ts)
+        <select class="form-control form-control-sm" bind:value={panelFamily}>
+          {#each getPanelFamilies($user, $user.partner?.settings) as family (family)}
+            <option value={family}>{$_('family.' + family)}</option>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectImportPage.svelte:3:27
+Error: Cannot find module 'three/examples/jsm/loaders/OBJLoader' or its corresponding type declarations. (ts)
+  import {ArrowHelper, AxesHelper, Box3, Matrix4, Intersection, Object3D, Plane, Vector3} from 'three'
+  import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
+  import {tick} from 'svelte'
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectImportPage.svelte:44:37
+Error: Argument of type 'Object3D<Event> | undefined' is not assignable to parameter of type 'Object3D<Event>'.
+  Type 'undefined' is not assignable to type 'Object3D<Event>'. (ts)
+        building = object
+        setMeshMaterialForHierarchy(building)
+        refreshProject()
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/CloneProjectForm.svelte:77:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="form-group" style="margin-top: 10px">
+          <label>{$_('roof.panels.family')}:</label>
+          <select class="form-control form-control-sm" bind:value={panelFamily}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/CloneProjectForm.svelte:79:37
+Error: Argument of type 'User | null' is not assignable to parameter of type '{ isAlphaTester?: boolean | undefined; isBetaTester?: boolean | undefined; } | undefined'. (ts)
+          <select class="form-control form-control-sm" bind:value={panelFamily}>
+            {#each getPanelFamilies($user, $user.partner?.settings) as family (family)}
+              <option value={family}>{$_('family.' + family)}</option>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/CloneProjectForm.svelte:79:44
+Error: '$user' is possibly 'null'. (ts)
+          <select class="form-control form-control-sm" bind:value={panelFamily}>
+            {#each getPanelFamilies($user, $user.partner?.settings) as family (family)}
+              <option value={family}>{$_('family.' + family)}</option>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectListPage.svelte:138:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="form-group">
+          <label>{$_('project.status')}</label>
+          <ProjectStatusSelect bind:status emptyLabel={$_('project.filter.allActive')} on:change={onFilterChange}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectListPage.svelte:143:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="form-group">
+          <label>{$_('project.filter.byPartner')}</label>
+          <PartnerSelect partners={Object.values(partnersById || {})} bind:value={partnerId} on:change={() => onFilterChange('partnerChange')}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectListPage.svelte:151:13
+Warn: A11y: A form label must be associated with a control. (svelte)
+          <div class="form-group">
+            <label>{$_('project.filter.byUser')}</label>
+            <select id="userSelect" bind:value={userId} class="form-control" on:change={onFilterChange}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/project/ProjectListPage.svelte:204:13
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+          <div class="col-sm-12 col-xxl-6">
+            <div class="project card card-hover-effect d-flex flex-row justify-content-between p-4 mb-3" on:click={e => openProject(project, e)}>
+              <div class="d-flex flex-row align-items-start">
+                <img src="/img/roof-types/{project.roofType}.svg" alt={$_('roof.types.' + project.roofType)} style="width: 100px">
+                <div class="ml-4">
+                  <h4>
+                    <span>{project.name}</span>
+                    {#if project.status}
+                      <small>({$_('project.statuses.' + project.status)})</small>
+                    {/if}
+                  </h4>
+                  <p>
+                    <a href="https://maps.google.com?q={project.lat},{project.lon}" target="_blank" rel="noreferrer">
+                      {project.address.address}
+                    </a>
+                  </p>
+                  <span>{project.customer.name}</span>
+                  <span class="ml-3 pl-3 border-left"><Link protocol="mailto:" value={project.customer.email}/></span>
+                  <span class="ml-3 pl-3 border-left"><Link protocol="tel:" value="+{project.customer.phone}"/></span>
+                </div>
+              </div>
+              <div class="text-right" style="min-width: 160px">
+                <p class="text-muted">{formatDateTime(project.createdAt)}</p>
+                <button class="clone btn btn-outline-dark" title={$_('project.clone.project')} on:click={() =>{ showCloneModal = true; clickedProject = project; }}>
+                  <Icon name="copy"/>
+                </button>
+                <!-- user disappears when hot reloading -->
+                {#if user?.role === UserRole.ADMIN}
+                  <button class="change-partner btn btn-outline-dark" title={$_('project.changePartner')} on:click={() => showChangePartnerModalFor = project}>
+                    <Icon name="corner-down-right"/>
+                  </button>
+                {/if}
+                <button class="delete btn btn-outline-dark" title={$_('project.delete')} on:click={deleteProject(project)}>
+                  <Icon name="trash"/>
+                </button>
+                <p class="mt-2 text-muted">{partnerName(project, partnersById)}</p>
+              </div>
+            </div>
+          </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/Offer.svelte:74:9
+Warn: A11y: <img> element should have an alt attribute (svelte)
+      <div class="col-12">
+        <img src="/img/roofit-logo-black-letters.png" class="offer-logo"/>
+        <span class="indicative">{$_('roof.offer.indicative.notice')}</span>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/LabeledNumericInput.svelte:11:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <NumericInput on:blur bind:value {min} {step} {max} inputClass="form-control no-spin"/>
+    <label class="floating">{label}</label>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/OfferInputs.svelte:146:57
+Error: Type 'undefined' is not assignable to type 'number'. (ts)
+            <input id="priceComponentName" type="text" bind:value={newPriceRow.name} class="price-row-label form-control" placeholder={$_('roof.name')} />
+            <NumericInput id="priceComponentPrice" bind:value={newPriceRow.componentPrice} step={0.01} min={-Infinity} placeholder={$_('settings.price')} />
+            <div class="input-group-append">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:38:29
+Error: Argument of type 'number | undefined' is not assignable to parameter of type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+    let bottomLeft = projection.fromLatLngToPoint(bounds.getSouthWest())
+    let scale = Math.pow(2, map.getZoom())
+    return path.map(p => {
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:41:30
+Error: 'worldPoint' is possibly 'null'. (ts)
+      let worldPoint = projection.fromLatLngToPoint(new google.maps.LatLng(p.lat, p.lng))
+      return {x: Math.floor((worldPoint.x - bottomLeft.x) * scale), y: Math.floor((worldPoint.y - topRight.y) * scale)}
+    })
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:41:45
+Error: 'bottomLeft' is possibly 'null'. (ts)
+      let worldPoint = projection.fromLatLngToPoint(new google.maps.LatLng(p.lat, p.lng))
+      return {x: Math.floor((worldPoint.x - bottomLeft.x) * scale), y: Math.floor((worldPoint.y - topRight.y) * scale)}
+    })
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:41:84
+Error: 'worldPoint' is possibly 'null'. (ts)
+      let worldPoint = projection.fromLatLngToPoint(new google.maps.LatLng(p.lat, p.lng))
+      return {x: Math.floor((worldPoint.x - bottomLeft.x) * scale), y: Math.floor((worldPoint.y - topRight.y) * scale)}
+    })
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:41:99
+Error: 'topRight' is possibly 'null'. (ts)
+      let worldPoint = projection.fromLatLngToPoint(new google.maps.LatLng(p.lat, p.lng))
+      return {x: Math.floor((worldPoint.x - bottomLeft.x) * scale), y: Math.floor((worldPoint.y - topRight.y) * scale)}
+    })
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:57:49
+Error: Argument of type 'LatLng | undefined' is not assignable to parameter of type 'LatLngLiteral | LatLng'.
+  Type 'undefined' is not assignable to type 'LatLngLiteral | LatLng'. (ts)
+    const points: Polygon = path.map(p => {
+      const x = geometry.computeDistanceBetween(c, new google.maps.LatLng(c.lat(), p.lng))
+      const y = geometry.computeDistanceBetween(c, new google.maps.LatLng(p.lat, c.lng()))
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:57:75
+Error: 'c' is possibly 'undefined'. (ts)
+    const points: Polygon = path.map(p => {
+      const x = geometry.computeDistanceBetween(c, new google.maps.LatLng(c.lat(), p.lng))
+      const y = geometry.computeDistanceBetween(c, new google.maps.LatLng(p.lat, c.lng()))
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:58:49
+Error: Argument of type 'LatLng | undefined' is not assignable to parameter of type 'LatLngLiteral | LatLng'. (ts)
+      const x = geometry.computeDistanceBetween(c, new google.maps.LatLng(c.lat(), p.lng))
+      const y = geometry.computeDistanceBetween(c, new google.maps.LatLng(p.lat, c.lng()))
+      return [x, y]
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:58:82
+Error: 'c' is possibly 'undefined'. (ts)
+      const x = geometry.computeDistanceBetween(c, new google.maps.LatLng(c.lat(), p.lng))
+      const y = geometry.computeDistanceBetween(c, new google.maps.LatLng(p.lat, c.lng()))
+      return [x, y]
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLocationMap.svelte:76:24
+Error: 'position' is possibly 'null'. (ts)
+    const position = e.latLng
+    path = path.concat(position.toJSON())
+
+
+
+/Users/villem/dev-sol/roofit/ui/shared/PanelFamilySelect.svelte:17:31
+Error: Argument of type 'User | null' is not assignable to parameter of type '{ isAlphaTester?: boolean | undefined; isBetaTester?: boolean | undefined; } | undefined'. (ts)
+    <select bind:value={value} class={'form-control ' + className} id="panel-family-select">
+      {#each getPanelFamilies(user, user?.partner?.settings ?? {}) as key (key)}
+        <option value={key}>{$_('family.' + key)}</option>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/summary/power-chart/ProductionBarGraph.svelte:54:87
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+      {#if showNumbersInFirstBar}
+        <GraphBarValues first={monthlyShadowProduction && monthlyShadowProduction[m]} second={monthlyNoShadowProduction && monthlyNoShadowProduction[m]}/>
+      {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/summary/power-chart/ProductionBarGraph.svelte:67:89
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+        {#if !showNumbersInFirstBar}
+          <GraphBarValues first={monthlyShadowProduction && monthlyShadowProduction[m]} second={monthlyNoShadowProduction && monthlyNoShadowProduction[m]}/>
+        {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/IndicativePieChart.svelte:4:21
+Error: The current file is a CommonJS module whose imports will produce 'require' calls; however, the referenced file is an ECMAScript module and cannot be imported with 'require'. Consider writing a dynamic 'import("chart.js/auto")' call instead. (ts)
+  import {_} from '@ui/i18n'
+  import Chart from 'chart.js/auto'
+  import ChartDataLabels from 'chartjs-plugin-datalabels'
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/IndicativePieChart.svelte:136:34
+Error: Argument of type '{ type: string; data: { datasets: { data: { id: string; value: number; }[]; backgroundColor: string[]; }[]; }; options: { parsing: { key: string; }; maintainAspectRatio: boolean; plugins: { datalabels: { color: string; font: { ...; }; formatter: (section: any) => string; }; }; }; plugins: (Plugin<...> | { ...; })[]; }' is not assignable to parameter of type 'ChartConfiguration<keyof ChartTypeRegistry, { id: string; value: number; }[], unknown> | ChartConfigurationCustomTypesPerDataset<keyof ChartTypeRegistry, { id: string; value: number; }[], unknown>'.
+  Type '{ type: string; data: { datasets: { data: { id: string; value: number; }[]; backgroundColor: string[]; }[]; }; options: { parsing: { key: string; }; maintainAspectRatio: boolean; plugins: { datalabels: { color: string; font: { ...; }; formatter: (section: any) => string; }; }; }; plugins: (Plugin<...> | { ...; })[]; }' is not assignable to type 'ChartConfiguration<keyof ChartTypeRegistry, { id: string; value: number; }[], unknown>'.
+    Types of property 'type' are incompatible.
+      Type 'string' is not assignable to type 'keyof ChartTypeRegistry'. (ts)
+      if (chart) chart.destroy()
+      chart = new Chart(savings, config)
+    }
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/IndicativeOffer.svelte:47:7
+Error: Type 'string' is not assignable to type 'null'. (ts)
+    if (quote!.location && quote.location!.lat) {
+      imgSrc = staticMapUrl({lat: quote.location!.lat, lon: quote.location!.lng}, zoom, 500, 500, quote.path)
+    }
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/IndicativeOffer.svelte:91:33
+Error: Type 'null' is not assignable to type 'string'. (ts)
+    <div class="page-break"/>
+    <IndicativePriceComponents {imgSrc} {quote} {showPriceComponentPrices} {partner}/>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/sales-tool/SalesToolPage.svelte:87:46
+Error: Type 'IndicativeOffer__SvelteComponent_' is not assignable to type 'Offer__SvelteComponent_'.
+  Types of property '$$prop_def' are incompatible.
+    Property 'showYearlyProduction' is missing in type '{ quote: Omit<Quote, "customerDetails">; project: EditableProject; zoom?: number | undefined; savings: Savings; showPriceComponentPrices: boolean; calcOffer?: ((calculateFromUnitPrice: boolean) => Promise<...>) | undefined; }' but required in type '{ quote: Omit<Quote, "customerDetails">; project: EditableProject; zoom?: number | undefined; savings: Savings; showYearlyProduction: boolean; showPriceComponentPrices: any; calcOffer?: ((calculateFromUnitPrice: boolean) => void) | undefined; }'. (ts)
+  <div class="col">
+    <IndicativeOffer bind:savings bind:this={offerComponent} bind:quote bind:project bind:zoom bind:showPriceComponentPrices/>
+  </div>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/Tabs.svelte:12:9
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+      <li class="nav-item" class:active={activeTab === item}>
+        <a class="nav-link" on:click={() => activeTab = item}>{$_(labelPrefix + item)}</a>
+      </li>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/Tabs.svelte:12:9
+Warn: A11y: <a> element should have an href attribute (svelte)
+      <li class="nav-item" class:active={activeTab === item}>
+        <a class="nav-link" on:click={() => activeTab = item}>{$_(labelPrefix + item)}</a>
+      </li>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/CalculatorSettings.svelte:78:38
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+                <div class="input-group-append">
+                  <NumericInput bind:value={row.price} step={0.01}/>
+                  <div class="input-group-append">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/CalculatorSettings.svelte:102:65
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+            <input type="text" bind:value={newSalesToolPriceRow.name} class="price-row-label form-control" placeholder={$T('roof.name')}/>
+            <NumericInput dataTest="price-component-price" bind:value={newSalesToolPriceRow.price} step={0.01} min={-Infinity} placeholder={$T('settings.price')}/>
+            <div class="input-group-append">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/CalculatorSettings.svelte:258:16
+Error: '$user' is possibly 'null'. (ts)
+          </div>
+          {#if $user.role === UserRole.ADMIN}
+            <div class="custom-control custom-checkbox my-2">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/EditablePriceRow.svelte:125:13
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+          {#if !readonly}
+            <img on:click={beginLabelEdit} src="/img/icons/edit.svg" alt="Edit label" title="{$_('edit.keyEsc')}"
+                 class="{isLabelChanged ? 'is-changed' : ''} tree-row-icon p-2">
+          {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/EditablePriceRow.svelte:176:26
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+    <td class="pr-0" style="min-width: 7em; width: 8em">
+      <NumericInput bind:value={row.vatRate} on:blur={() => dispatch('update')}
+        disabled={readonly} step="0.01" showDecimalPlaces={true}
+
+
+/Users/villem/dev-sol/roofit/ui/shared/temporaryFixes.ts:31:87
+Error: Cannot assign to 'watts' because it is a read-only property. 
+    for (const p of rp.objects) {
+      if (p.type === 'panel' && [160, 240].includes((p as Panel).watts)) (p as Panel).watts -= 5
+    }
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SolarSettings.svelte:97:13
+Warn: A11y: A form label must be associated with a control. (svelte)
+          {:else}
+            <label class="mb-2">{$_('settings.availablePanels', {values: {name: $_('panel.' + panelFamily)}})}</label>
+            <AvailableSelector bind:selectedIds={settings.panel.availableIds}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SolarSettings.svelte:98:37
+Error: Type 'string[] | undefined' is not assignable to type 'string[]'.
+  Type 'undefined' is not assignable to type 'string[]'. (ts)
+            <label class="mb-2">{$_('settings.availablePanels', {values: {name: $_('panel.' + panelFamily)}})}</label>
+            <AvailableSelector bind:selectedIds={settings.panel.availableIds}
+                               defaultIds={defaults && defaults.panel.availableIds}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SettingsPage.svelte:148:15
+Warn: A11y: A form label must be associated with a control. (svelte)
+            <div class="form-group" style="margin-top: 10px">
+              <label>{($_)('roof.panels.family')}:</label>
+              {#if project}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SettingsPage.svelte:155:43
+Error: Argument of type 'User | null' is not assignable to parameter of type '{ isAlphaTester?: boolean | undefined; isBetaTester?: boolean | undefined; } | undefined'. (ts)
+                <select class="form-control" on:change={(e) => onPanelFamilyChange(e)} value={panelFamily} data-test='panel-family-select'>
+                  {#each getPanelFamilies($user) as family (family)}
+                    <option value={family}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SettingsPage.svelte:157:50
+Error: 'partner' is possibly 'undefined'. (ts)
+                    <option value={family}>
+                      {$_('family.' + family) + (partner.settings[family] ? '' : $_('settings.missing'))}
+                    </option>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SettingsPage.svelte:190:49
+Error: Type 'Partner | undefined' is not assignable to type 'Partner'.
+  Type 'undefined' is not assignable to type 'Partner'. (ts)
+        {:else if activeTab === 'calculator'}
+          <CalculatorSettings {commonSettings} {partner} {panelFamily} {settings}/>
+        {:else if activeTab === 'customPriceRows'}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/settings/SettingsPage.svelte:192:41
+Error: Type 'CustomPriceRows | undefined' is not assignable to type 'CustomPriceRows'.
+  Type 'undefined' is not assignable to type 'CustomPriceRows'. (ts)
+        {:else if activeTab === 'customPriceRows'}
+          <CustomPriceRowsSettings bind:customPriceRows currency={commonSettings.currency}/>
+        {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/ColumnOffsetField.svelte:68:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <Popover title={$_('roof.columnOffsetHelp')}>
+    <label>{$_('roof.columnOffset')}</label>
+    <DimensionInput bind:value={roofPlane.columnOffset} step={5} min={-5} disabled={disabled && $_('roof.columnOffsetDisabledHelp')}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/AutofillMode.svelte:48:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group pl-3">
+    <label>{$_('roof.autofill.mode')}</label>
+    <select class="form-control form-control-sm" bind:value={autofill.selected}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/AutofillMode.svelte:60:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <div class="form-group">
+    <label>{$_('roof.autofill.overlap')}</label>
+    <DimensionInput bind:value={autofill.overlapMax} min={panelParams.panelOverlap.min} max={panelParams.panelOverlap.max} step={1}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:72:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="col-12 mt-3">
+          <label>{$_('roof.addSection.size')}</label>
+          <div class="row">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:80:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="slopeAngle col-6 mt-3 mr-5">
+          <label>{$_('roof.slopeAngle')}</label>
+          <AngleInput bind:value={section.slopeAngle} min={10} max={80} step={0.01}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:85:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="rotation col-6 mt-3">
+          <label>{$_('roof.addSection.rotation')}</label>
+          <AngleInput bind:value={section.rotation}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:90:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="positionY col-6 mt-3">
+          <label>{$_('roof.addSection.verticalShift')}</label>
+          <DimensionInput bind:value={section.position.y} min={-Infinity}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:95:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="col-12 mt-3">
+          <label>{$_('roof.addSection.horizontalShift')}</label>
+          <div class="row">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:81:28
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+          <label>{$_('roof.slopeAngle')}</label>
+          <AngleInput bind:value={section.slopeAngle} min={10} max={80} step={0.01}/>
+        </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/NewRoofSectionForm.svelte:86:28
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+          <label>{$_('roof.addSection.rotation')}</label>
+          <AngleInput bind:value={section.rotation}/>
+        </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/EdgesForm.svelte:25:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="form-group {i === 0 || i === 3 ? 'col-6 offset-3' : 'col-6'}">
+      <label>{$_('roof.editEdges.' + edge)}</label>
+      <select class="form-control" bind:value={edges[edge]}>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectActions.svelte:36:5
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+
+    <a class="dropdown-item" on:click={() => showEditEdges = true}>
+      <span>{$_('roof.editEdges.title')}</span>
+    </a>
+  </Dropdown>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectActions.svelte:36:5
+Warn: A11y: <a> element should have an href attribute (svelte)
+
+    <a class="dropdown-item" on:click={() => showEditEdges = true}>
+      <span>{$_('roof.editEdges.title')}</span>
+    </a>
+  </Dropdown>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:46:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    {#if field === 'name'}
+      <label>{$_('roof.' + field)}</label>
+      <div class="input-group input-group-sm">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:51:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    {:else if field === 'watts'}
+      <label>{$_('roof.' + field)}</label>
+      <DimensionInput bind:value={object[field]} unit="W" disabled={object['isIntegrated']}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:55:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <Popover title={$_(`roof.verticalObjectHelp.${field}`)}>
+        <label>{$_('roof.' + field)}</label>
+        <DimensionInput bind:value={object[field]}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:61:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <Popover title={$_('roof.objectHelp.' + field)}>
+        <label>{$_('roof.' + field)}</label>
+        <DimensionInput bind:value={object[field]} min={field === 'height' ? 0 : 100}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:72:5
+Warn: A11y: A form label must be associated with a control. (svelte)
+  <Popover title={$_('roof.objectHelp.margin')}>
+    <label>{$_('roof.margin')}</label>
+    <DimensionInput bind:value={object.margin}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:85:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="form-group overhangs ml-2 mr-0">
+        <label>{$_('roof.dormerOverhangs')}</label>
+        <div class="d-flex">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofObjectFieldsEditor.svelte:107:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <Popover title={$_('roof.dormerExtraDepthHelp')}>
+        <label>{$_('roof.dormerExtraDepth')}</label>
+        <DimensionInput bind:value={object.extraDepth}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MoveRoofSectionForm.svelte:52:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="col-6 mt-3 rotation">
+      <label>{$_('roof.addSection.rotation')}</label>
+      <AngleInput bind:value={rotation}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MoveRoofSectionForm.svelte:57:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="col-6 mt-3 vertical-position">
+      <label>{$_('roof.addSection.verticalShift')}</label>
+      <DimensionInput bind:value={position.y} min={-Infinity}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MoveRoofSectionForm.svelte:62:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <div class="col-12 mt-3 horizontal-position">
+      <label>{$_('roof.addSection.horizontalShift')}</label>
+      <div class="row">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MergePlanesForm.svelte:5:11
+Error: Module '"three"' has no exported member 'Geometry'. (ts)
+  import EditableRoofPlane from '@domain/roof/EditableRoofPlane'
+  import {Geometry, Mesh, Vector3} from 'three'
+  import {createEventDispatcher} from 'svelte'
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MergePlanesForm.svelte:31:62
+Error: Property 'x' does not exist on type 'never'. (ts)
+      const newVertex = plane3d.localToWorld(new Vector3(positionArray[i], positionArray[i + 1], positionArray[i + 2]))
+      if (!vertexArray.find(existingVertex => existingVertex.x === newVertex.x && existingVertex.y === newVertex.y && existingVertex.z === newVertex.z)) {
+        vertexArray.push(newVertex)
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MergePlanesForm.svelte:31:98
+Error: Property 'y' does not exist on type 'never'. (ts)
+      const newVertex = plane3d.localToWorld(new Vector3(positionArray[i], positionArray[i + 1], positionArray[i + 2]))
+      if (!vertexArray.find(existingVertex => existingVertex.x === newVertex.x && existingVertex.y === newVertex.y && existingVertex.z === newVertex.z)) {
+        vertexArray.push(newVertex)
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MergePlanesForm.svelte:31:134
+Error: Property 'z' does not exist on type 'never'. (ts)
+      const newVertex = plane3d.localToWorld(new Vector3(positionArray[i], positionArray[i + 1], positionArray[i + 2]))
+      if (!vertexArray.find(existingVertex => existingVertex.x === newVertex.x && existingVertex.y === newVertex.y && existingVertex.z === newVertex.z)) {
+        vertexArray.push(newVertex)
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/MergePlanesForm.svelte:32:26
+Error: Argument of type 'Vector3' is not assignable to parameter of type 'never'. (ts)
+      if (!vertexArray.find(existingVertex => existingVertex.x === newVertex.x && existingVertex.y === newVertex.y && existingVertex.z === newVertex.z)) {
+        vertexArray.push(newVertex)
+      }
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/ManualStringConnector.ts:42:9
+Error: Operator '<' cannot be applied to types 'string | number' and 'number'. 
+    //* on empty assignment: disconnect string, possibly remove inverter from the map, enable all rows.
+    if (index < 0) this.disconnectStringIfAny_(string, -1)
+    else {
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/ManualInverterSelection.svelte:72:21
+Error: Property 'align' is missing in type 'HTMLElement' but required in type 'HTMLDivElement'. (ts)
+
+<section bind:this={manualInverterSelection} class="manual-inverter-selection" style={manualInverterSelectionHeight}>
+  <table class="table">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlaneFieldsEditor.svelte:30:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <Popover title={$_('roof.widthHelp')}>
+      <label>{$_('roof.width')}</label>
+      <DimensionInput bind:value={roofPlane.width} min={1000} disabled={roofPlane.isComputed('width')}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlaneFieldsEditor.svelte:43:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="form-group indent ml-2">
+          <label>{$_('roof.ridgeIndents')}</label>
+          <div class="d-flex">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlaneFieldsEditor.svelte:62:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <Popover title={$_('roof.slopeLengthHelp')}>
+      <label>{$_('roof.slopeLength')}</label>
+      <DimensionInput bind:value={roofPlane.slopeLength} disabled={roofPlane.isComputed('slopeLength')} min={100}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/RoofPlaneFieldsEditor.svelte:70:7
+Warn: A11y: A form label must be associated with a control. (svelte)
+    <Popover title={$_('roof.slopeAngleHelp')}>
+      <label>{$_('roof.slopeAngle')}</label>
+      <AngleInput bind:value={roofPlane.slopeAngle} min={0} max={90} step={0.01} disabled={roofPlane.isComputed('slopeAngle')}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/shadowAnalysis/LightBlockersEditor.svelte:86:9
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+      <div class="flex-fill">
+        <div class="card border rounded c-pointer blocker-sample mx-1" class:active={blocker?.type === sample.type} on:click={() => toggleSample(sample)}>
+          <div class="py-2">
+            <Icon name="lightBlocker-{sample.type}" iconClass="icon-lg"/>
+          </div>
+          <small class="mb-1">{$_('lightBlockers.' + sample.type)}</small>
+        </div>
+      </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/shadowAnalysis/LightBlockersEditor.svelte:108:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="form-group mt-2 mr-2">
+        <label>{$_('lightBlockers.height')}</label>
+        <DimensionInput bind:value={blocker.height}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/shadowAnalysis/LightBlockersEditor.svelte:112:9
+Warn: A11y: A form label must be associated with a control. (svelte)
+      <div class="form-group mt-2 mr-2">
+        <label>{$_('lightBlockers.width')}</label>
+        <DimensionInput bind:value={blocker.width}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/shadowAnalysis/LightBlockersEditor.svelte:117:11
+Warn: A11y: A form label must be associated with a control. (svelte)
+        <div class="form-group mt-2 mr-2">
+          <label>{$_('lightBlockers.trunkHeight')}</label>
+          <DimensionInput bind:value={blocker.trunkHeight} max={blocker.height}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/ElectricalControls.svelte:82:7
+Error: Type 'Timeout' is not assignable to type 'number'. (ts)
+    if (currentString && !fading) {
+      fading = setTimeout(() => {
+        fading = 0
+
+
+/Users/villem/dev-sol/roofit/ui/pages/editor/electrical/ElectricalControls.svelte:182:45
+Error: Object is possibly 'undefined'. (ts)
+                    <td class="text-right">{name}</td>
+                    <td class="text-right">{panels.first().panelType.maxVoltageOC(minTemp).toFixed(2)} V</td>
+                  </tr>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/summary/RoofSummary.svelte:52:11
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
+          <div class="card card-hover-effect roof-plane p-3 h-100 text-center"
+               on:click={() => $user && router.navigateTo(`projects/${project._id}/planes/${project.editablePlanes.indexOf(plane)}`)}>
+            <h5>{$_(plane.isDormerPlane() ? 'roof.dormerPlane' : 'roof.plane')} {plane.name}</h5>
+            <RoofPlaneSummary {project} roofPlane={plane} {powerOutputs}/>
+          </div>
+        </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/OfferIntro.svelte:92:17
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+              {#if !offer.isSealed}
+                <img on:click={beginNoteEdit} src="/img/icons/edit.svg" alt="Edit label" title="{$_('edit.keyEsc')}"
+                     id="edit-note"
+                     class="{personalNote !== defaultNote ? 'is-changed' : ''} tree-row-icon p-2">
+              {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/OfferIntro.svelte:143:11
+Warn: A11y: <img> element should have an alt attribute (svelte)
+        <div class="p-5">
+          <img src="/img/offer/mobile-intro.jpg" class="img-fluid rounded-circle">
+        </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/OfferSavings.svelte:36:19
+Warn: A11y: A form label must be associated with a control. (svelte)
+                <div class="form-group">
+                  <label class="h5">{$_('roof.offer.production.consumptionPerYear')}</label>
+                  <DimensionInput bind:value={yearlyConsumptionKWh} unit="kWh"/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/OfferSavings.svelte:43:19
+Warn: A11y: A form label must be associated with a control. (svelte)
+                <div class="form-group">
+                  <label class="h5">{$_('roof.offer.savings.buyPrice')}</label>
+                  <DimensionInput bind:value={offer.buyKWhPrice} unit="{currency}/kWh" step={0.01}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/OfferSavings.svelte:50:19
+Warn: A11y: A form label must be associated with a control. (svelte)
+                <div class="form-group">
+                  <label class="h5">{$_('roof.offer.savings.sellPrice')}</label>
+                  <DimensionInput bind:value={offer.sellKWhPrice} unit="{currency}/kWh" step={0.01}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/offer/OfferSavings.svelte:57:19
+Warn: A11y: A form label must be associated with a control. (svelte)
+                <div class="form-group">
+                  <label class="h5 d-inline">{$_('roof.offer.savings.consumptionCoverage')}</label>
+                  <Popover title={$_('roof.offer.savings.consumptionCoverageHelp')}>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/LabelBox.svelte:9:14
+Warn: A11y: A form label must be associated with a control. (svelte)
+<div class="form-group {$$props.class ?? 'mb-2'} {label}">
+  {#if label}<label>{$_((label.includes('.') || label.length <= 3) ? label : 'settings.' + label)}</label>{/if}
+  <div class="input-group input-group-sm">
+
+
+/Users/villem/dev-sol/roofit/ui/pages/order/AddMaterial.svelte:152:41
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+            <div class="col-xl-2 fld">
+              <MultiUnitPriceField bind:value={price} bind:unit {units} ratio={1} currency={settings.currency}
+                                   quick={true} on:input={check}/>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/order/AddMaterial.svelte:175:40
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+                  {:else}
+                    <NumericInput bind:value disabled={hasOneLength} step={1} min={0} on:change={check}/>
+                    <div class="unit">mm</div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/order/AddMaterial.svelte:182:34
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+              <input type="text" bind:value={name} class="price-row-label form-control"/>
+              <NumericInput bind:value step={0.01} min={0} quick={true} on:input={check}/>
+            {/if}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/order/AddMaterial.svelte:188:36
+Error: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'. (ts)
+              <LabelBox label={unit}>
+                <NumericInput bind:value disabled={hasOneLength} step={1} min={0} quick={true} on:change={check}/>
+              </LabelBox>
+
+
+/Users/villem/dev-sol/roofit/ui/shared/OrderFieldEditor.svelte:53:5
+Warn: Also define the standard property 'appearance' for compatibility (css)
+  .dynamic-border {
+    -webkit-appearance: none;
+  }
+
+
+/Users/villem/dev-sol/roofit/ui/pages/order/CollapseToggle.svelte:7:1
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+
+<div class="text-left btn-link" style="cursor:pointer;" on:click={() => show = !show}>
+  {$_(title)}
+  <Icon name={show ? 'chevron-up' : 'chevron-down'}/>
+</div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/order/CollapsibleOrderRow.svelte:30:3
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+<tr class:d-print-none={order.isVoid}>
+  <td class="text-left" class:selected={order.selected} title={order.hint} style={`padding-left: ${level}em;`}
+      on:click={() => propagate(order, 'clicked')}
+  >
+    {#if order.isNested}
+      <CollapseToggle title={order.getTitle($_)} bind:show={order.expanded}/>
+    {:else}
+      {order.getTitle($_)}
+    {/if}
+  </td>
+  {#if order.category === OrderCategory.metal}
+
+
+/Users/villem/dev-sol/roofit/ui/App.svelte:166:75
+Error: Type '{ page: string; project: EditableProject | undefined; }' is not assignable to type '{ [x: string]: never; } & { page: string; project?: EditableProject | undefined; }'.
+  Type '{ page: string; project: EditableProject | undefined; }' is not assignable to type '{ [x: string]: never; }'.
+    Property 'page' is incompatible with index signature.
+      Type 'string' is not assignable to type 'never'. (ts)
+
+<svelte:component this={page?.endsWith('/preview') ? NoLayout : PageLayout} bind:page bind:project>
+  {#if path !== ''}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorSlope.svelte:50:7
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+         on:mouseleave={() => {if(selectedSlopeType) slopeType = selectedSlopeType}}>
+      <div class="card card-hover-effect" class:chosen={selectedSlopeType === slope}
+           on:click={() => chooseSlope(slope)}>
+        <div class="card-body px-4">
+          <div class="d-flex justify-content-between align-items-center mb-0">
+            <div class="me-2">
+              <div class="mb-0">
+                {$_('roof.calculator.slope.' + slope)}
+              </div>
+            </div>
+            <div style="white-space: nowrap">{degrees[slope]}º</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+/Users/villem/dev-sol/roofit/ui/pages/calculator/CalculatorLayout.svelte:7:5
+Warn: A11y: <img> element should have an alt attribute (svelte)
+  {#if step !== 3 && step !== 4 && step !== 5}
+    <img src="/img/roofit-logo.png" style="width: 134px; margin: 20px" class=""/>
+  {:else}
+
+
+/Users/villem/dev-sol/roofit/ui/pages/importer/ImporterApp.svelte:27:2
+Error: Property 'page' is missing in type '{}' but required in type '{ page: string; project?: EditableProject | undefined; }'. (ts)
+
+<svelte:component this={PageLayout}>
+  <div class="container-full">
+
+
+/Users/villem/dev-sol/roofit/ui/shared/EditableCell.svelte:25:1
+Warn: A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event. (svelte)
+
+<td style="cursor: pointer;" on:click={focusOnInput}>
+  <Popover title={$_('settings.defaultValue')} content={oldValue+''} autoshow={valueHasChanged}>
+    <input
+      class="form-control dynamic-border p-0 h-100 text-right"
+      class:is-changed={valueHasChanged}
+      name="quantity"
+      value={value}
+      on:change={onValueChange}
+      type="number"
+      min="0"
+    />
+  </Popover>
+</td>
+
+
+
+/Users/villem/dev-sol/roofit/ui/shared/EditableCell.svelte:46:5
+Warn: Also define the standard property 'appearance' for compatibility (css)
+    border: 1px solid white;
+    -webkit-appearance: none;
+  }
+
+
+====================================
+svelte-check found 71 errors and 98 warnings in 65 files

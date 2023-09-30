@@ -1,0 +1,7 @@
+/.idea
+/.nyc_output
+/node_modules
+/reports
+/*.lcov
+/*.log*
+/test/runner.js

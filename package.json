@@ -1,0 +1,64 @@
+{
+  "author": {
+    "name": "Villem Alango",
+    "email": "villem.alango@gmail.com"
+  },
+  "name": "svelte-check-filter",
+  "version": "0.0.1",
+  "description": "Stream filter for svelte-check output.",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/valango/svelte-check-filter.git"
+  },
+  "files": [
+    "README.md",
+    "LICENSE",
+    "index.js",
+    "src"
+  ],
+  "main": "./index.js",
+  "scripts": {
+    "clean": "rimraf .nyc_output out reports t*mp *.log *.t*mp *.lcov",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "eslint --ext .js .",
+    "purge": "npm run clean && rimraf node_modules",
+    "test": "NODE_ENV=test nyc mocha 'test/**/*.test.js'"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valango/svelte-check-filter/issues"
+  },
+  "homepage": "https://github.com/valango/svelte-check-filter/blob/master/README.md",
+  "engines": {
+    "node": ">= 16.0.0",
+    "npm": ">= 8.0.0"
+  },
+  "keywords": [
+    "svelte-check",
+    "stream",
+    "filter"
+  ],
+  "nyc": {
+    "all": true,
+    "check-coverage": true,
+    "exclude": [
+      "src/typedefs.js"
+    ],
+    "include": [
+      "src/**/*.js",
+      "test/mock-fs/**/*.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "./reports"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "codecov": "^3.8.3",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "rimraf": "^5.0.5"
+  }
+}
