@@ -3,9 +3,11 @@
     "name": "Villem Alango",
     "email": "villem.alango@gmail.com"
   },
+  "bin": "./index.js",
   "name": "svelte-check-filter",
   "version": "0.0.1",
   "description": "Stream filter for svelte-check output.",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/valango/svelte-check-filter.git"
@@ -18,11 +20,11 @@
   ],
   "main": "./index.js",
   "scripts": {
-    "clean": "rimraf .nyc_output out reports t*mp *.log *.t*mp *.lcov",
+    "clean": "rimraf .nyc_output out reports t*mp *.log *.t*mp *.lcov *.tar",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "lint": "eslint --ext .js .",
     "local-install": "npm run pack_ && npm i -g x.tar && rm x.tar",
-    "pack_": "npm run clean && cd .. && tar -c -f nsweep/x.tar -X nsweep/.tar nsweep",
+    "pack_": "npm run clean && cd .. && tar -c -f svelte-check-filter/x.tar -X svelte-check-filter/.tar svelte-check-filter",
     "purge": "npm run clean && rimraf node_modules",
     "test": "NODE_ENV=test mocha 'test/**/*.test.js'"
   },

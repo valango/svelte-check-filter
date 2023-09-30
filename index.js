@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const {name, version} = require('./package.json')
 const regexp = require('./src/regexp')
 const filter = require('./src/filter')
